@@ -1,0 +1,32 @@
+.backgroundContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Ensure no overflow from background image */
+  }
+  
+.backgroundContainer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: url('/background.jpg') no-repeat center center;
+background-size: cover;
+opacity: 0.1; /* Adjust the opacity here */
+z-index: -1; /* Place the pseudo-element behind the content */
+}
+
+.content {
+position: relative;
+color: #000;
+border-radius: 10px;
+padding: 40px;
+max-width: 800px;
+width: 100%;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  

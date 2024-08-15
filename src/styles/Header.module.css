@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #262626;
+    border-bottom: 2px solid #da8b57;
+  }
+  
+  .logo {
+    font-size: 36px;
+    color: #da8b57;
+    font-weight: bold;
+  }
+  
+  .actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .solveButton {
+    background-color: #363631;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-right: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .solveButton:hover {
+    background-color: #5e5e5e;
+  }
+  
+  .solveButton:active {
+    background-color: #5e5e5e;
+    transform: translateY(2px);
+  }
+  
+  .userIcon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .iconImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #da8b57;
+  }
+  

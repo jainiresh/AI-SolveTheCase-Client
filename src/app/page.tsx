@@ -1,16 +1,33 @@
-import Link from 'next/link';
+'use client';
+import Head from 'next/head';
+import { useRouter } from 'next/navigation'
 import styles from '../styles/Home.module.css';
+import { LOGIN_URL } from '@/constants/constants';
 
-const Home = () => {
+export default function Home() {
+  const router = useRouter()
+  const handleLogin = ():void =>{
+    if(localStorage.getItem('id') && localStorage.getItem("id") != "null") 
+      router.push(`/story?id=${localStorage.getItem('id')}&email=${localStorage.getItem('email')}`);
+    window.location.href = LOGIN_URL;
+  }
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Welcome to the Inbox Escape Room</h1>
-      <p className={styles.text}>Are you ready to solve puzzles and escape the inbox?</p>
-      <Link href="/story">
-        <button className={styles.startButton}>Start the Escape Room</button>
-      </Link>
+      <Head>
+        <title>Mystery Game Solver</title>
+        <meta name="description" content="Dive into the mystery and solve intriguing puzzles!" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className={styles.hero}>
+        <h1 className={styles.title}>Welcome to the Mystery Game Solver</h1>
+        <p className={styles.description}>
+        Are you ready to solve some mysteries? Let's dive into the unknown!
+        </p>
+        <button className={styles.signInButton} onClick={handleLogin}>
+          Sign in with Google and Get Started
+        </button>
+      </div>
     </div>
   );
-};
-
-export default Home;
+}

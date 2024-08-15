@@ -1,0 +1,29 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Ensure the pseudo-element is positioned relative to this container */
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2; /* Adjust the opacity level as needed */
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
+  }
+  
+  .container > * {
+    position: relative; /* Ensure that the content is above the pseudo-element */
+  }
+  

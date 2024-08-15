@@ -1,0 +1,121 @@
+.threadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 5rem auto;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+  }
+  
+  .threadHeader {
+    width: 100%;
+    background: #262626;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .headerTitle {
+    font-size: 32px;
+    color: #da8b57;
+    margin-bottom: 10px;
+  }
+  
+  .headerDescription {
+    font-size: 18px;
+    color: #afac9f;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: justify;
+  }
+  
+  .threadContent {
+    width: 100%;
+  }
+  
+  .storyEntry {
+    width: 100%;
+    background: #2b2b2b;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #3a3a3a;
+    color: #da8b57;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .author {
+    font-weight: bold;
+    color: #da8b57;
+  }
+
+  .imageButton {
+    background-color: #363631;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .imageButton:hover {
+    background-color: #5e5e5e;
+  }
+  
+
+  .image {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .content {
+    font-size: 16px;
+    color: #da8b57;
+  }
+  .investigationForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .investigationInput {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #da8b57;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: #262626;
+    color: #da8b57;
+  }
+  
+  .submitButton {
+    background-color: #ff6600;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .submitButton:hover {
+    background-color: #e55b00;
+  }
+  
+  .submitButton:active {
+    background-color: #cc5200;
+    transform: translateY(2px);
+  }

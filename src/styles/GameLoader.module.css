@@ -1,0 +1,32 @@
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 1) 100%);
+  }
+  
+  .spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.2); /* Light semi-transparent border */
+    border-top: 8px solid #da8b57; /* Bright color for the spinner */
+    animation: spin 1.5s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.7); /* Glowing effect */
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .message {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.7); /* Glowing text effect */
+  }
+  

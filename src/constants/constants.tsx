@@ -1,0 +1,1 @@
+export const LOGIN_URL = process.env.LOGIN_URL || "http://localhost:3000/auth/nylas/hostedAuth";
