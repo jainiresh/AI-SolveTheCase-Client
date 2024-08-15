@@ -1,0 +1,19 @@
+.escapeRoomContainer {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .hintButton,
+  .submitButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #61dafb;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hintButton:hover,
+  .submitButton:hover {
+    background-color: #21a1f1;
+  }
+  

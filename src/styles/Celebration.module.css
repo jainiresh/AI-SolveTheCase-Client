@@ -1,0 +1,39 @@
+.celebrationContainer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #e0ffe0;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .headingTwo {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+  }
+  
+  .paragraph {
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .confetti {
+    margin-top: 30px;
+    font-size: 4rem;
+    color: #ffeb3b;
+    animation: confetti-fall 1s infinite;
+  }
+  
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(50px);
+    }
+  }
+  
