@@ -16,21 +16,11 @@ function isValidUUID(uuid: string) {
 const sampleEntries = [
   {
     id: 1,
-    author: "Player 1",
-    content: "I met John at the park. He was talking to someone on the phone.",
+    author1: "Player 1",
+    author2: "Player 2",
+    query: "I met John at the park. He was talking to someone on the phone.",
+    response: "I met John at the park. He was talking to someone on the phone.",
     timestamp: "Today at 3:45 PM"
-  },
-  {
-    id: 2,
-    author: "Player 2",
-    content: "Later, I saw Emily at the grocery store. She seemed to be in a hurry.",
-    timestamp: "Today at 4:10 PM"
-  },
-  {
-    id: 3,
-    author: "Player 1",
-    content: "I ran into Sarah at the coffee shop. She was reading a newspaper.",
-    timestamp: "Today at 4:30 PM"
   }
 ];
 
