@@ -47,6 +47,7 @@ export const Story: React.FC = () => {
   const checkifStoryExists = async(email: string) => {
     const response = await post("/story/exists", {"email": email});
     const isExists = response.data['response'];
+    console.log("Is existing story " + isExists)
     setDoesStoryExists(isExists);
     setShowLoader(false);
   }
@@ -59,10 +60,10 @@ export const Story: React.FC = () => {
  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // const storyCreationResponse = await post("/story/create", {
-    //     storyInput,
-    //     email: localStorage.getItem('email')
-    // })
+    const storyCreationResponse = await post("/story/create", {
+        storyInput,
+        email: localStorage.getItem('email')
+    })
     setDoesStoryExists(true)
     console.log(storyInput)
   };
