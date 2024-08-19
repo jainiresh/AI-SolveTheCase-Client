@@ -53,7 +53,7 @@ export const Story: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setShowLoader(true);
-    await post("/story/create", {
+    const storyCreationResponse = await post("/story/create", {
         data:storyInput,
         email: localStorage.getItem('email')
     }
@@ -69,7 +69,6 @@ export const Story: React.FC = () => {
 
 
   return (
-  
     <div className={styles.container}> 
     <div>
     {showLoader ? <GameLoader loadingText='Creating'/> 

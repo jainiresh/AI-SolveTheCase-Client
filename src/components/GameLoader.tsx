@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/GameLoader.module.css';
 import { INVESTIGATING_MESSAGES, LOADING_MESSAGES } from '@/constants/constants';
