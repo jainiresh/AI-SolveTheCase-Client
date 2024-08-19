@@ -22,7 +22,7 @@ export default function Home() {
       <div className={styles.hero}>
         <h1 className={styles.title}>Welcome to the Mystery Game Solver</h1>
         <p className={styles.description}>
-        Are you ready to solve some mysteries? Let's dive into the unknown!
+        Are you ready to solve some mysteries? Let`s dive into the unknown!
         </p>
         <button className={styles.signInButton} onClick={handleLogin}>
           Sign in with Google and Get Started

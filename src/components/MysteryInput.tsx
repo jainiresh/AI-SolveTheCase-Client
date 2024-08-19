@@ -30,7 +30,7 @@ const MysteryInputForm: React.FC<StoryEntryInput> = ({ storyInput, setStoryInput
     <div className={styles.backgroundContainer}>
       <div className={styles.content}>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <h2 className={styles.title}>Let&#39s Start Your Creative Story and Investigate</h2>
+          <h2 className={styles.title}>Let`s Start Your Creative Story and Investigate</h2>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="storyInput">
               Share the details of your day:
