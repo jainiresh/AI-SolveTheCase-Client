@@ -4,9 +4,10 @@ const nextConfig = {
         remotePatterns:[
             {
                 protocol:'https',
-                hostname: '*'
+                hostname: '*',
             }
-        ]
+        ],
+        domains:['ucarecdn.com']
     },
     output: 'export'
 };
