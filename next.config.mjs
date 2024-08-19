@@ -7,7 +7,8 @@ const nextConfig = {
                 hostname: '*',
             }
         ],
-        domains:['ucarecdn.com']
+        domains:['ucarecdn.com'],
+        loader:'custom'
     },
     output: 'export'
 };

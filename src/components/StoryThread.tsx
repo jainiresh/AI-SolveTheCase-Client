@@ -8,9 +8,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Alert, Button, CardMedia, Typography } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { style } from '@mui/system';
-import Image from 'next/image';
 import FullScreenDialog from './FullScreenDialog';
+import Image from './Image';
 
 interface StoryEntry {
   id: number;
