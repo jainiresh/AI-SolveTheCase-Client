@@ -26,9 +26,6 @@ const Instructions: React.FC<InstructionsProps> = ({handleUserStoryInput}) => {
       <button className={styles.button} onClick={() => handleUserStoryInput('ownStory')}>
         Start with your own creative inputs
       </button>
-      <button className={styles.button} onClick={() => handleUserStoryInput('aiStory')}>
-        Start with AI-generated inputs
-      </button>
     </div>
   );
 };

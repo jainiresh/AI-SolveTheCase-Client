@@ -2,7 +2,6 @@
 import React, { FormEventHandler, useState } from 'react';
 import styles from '../styles/StartStory.module.css';
 import Instructions from './Instructions';
-import {post} from '../helpers/request'
 import MysteryInputForm from './MysteryInput';
 import { testDay } from '@/constants/constants';
 
@@ -25,7 +24,7 @@ const [storyContext, setStoryContext] = useState<string>('empty')
       <div className={styles.content}>
       {storyContext=='empty' && <Instructions handleUserStoryInput ={handleUserStoryInput}/>}
       {storyContext=='ownStory' && <MysteryInputForm storyInput={ storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
-      {storyContext=='aiStory' && <MysteryInputForm storyInput={ testDay} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
+      {/* {storyContext=='aiStory' && <MysteryInputForm storyInput={testDay} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>} */}
     </div>
     </div>
   );

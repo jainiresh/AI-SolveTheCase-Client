@@ -1,4 +1,8 @@
-export const LOGIN_URL = process.env.LOGIN_URL || "http://localhost:3000/auth/nylas/hostedAuth";
+
+export const backendUrl= process.env.BACKEND_URL || 'http://localhost:3000'
+export const frontEndUrl= process.env.FRONTEND_URL || 'http://localhost:3001'
+
+export const LOGIN_URL = process.env.LOGIN_URL || backendUrl + "/auth/nylas/hostedAuth";
 export const LOADING_MESSAGES = [
     'Creating a story',
     'Let the magic happen',
@@ -38,5 +42,4 @@ export const INVESTIGATING_MESSAGES = [
 
   export const testDay = `
   Morning i woke up, and my gardener was watering my plants .\nHe was cheerful as everyday, singing while watering the plants.\n\nI got up and took up my laptop.\nMy friend Antony called, but when i picked up he did not speak, and the call got disconnected in a few seconds.\n\nThen i worked up to noon, then my maiden came and collected all my clothes.\nShe did not speak to me properly, and she told that it was a family problem so i did not ask deeper details from her.\n\nThen evening i went to the gym , my trainer ALI was there, also working out with his other friends Veronica, and Saru.\n\nI went to the medical shop, and bought some digestive tablets, as i had some stomach ache.\nThe person in the reception was a bit sad, but was working seriously.\n\nThen i came home, and slept`;
-  
   

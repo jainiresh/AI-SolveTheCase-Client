@@ -1,7 +1,8 @@
+import { backendUrl } from '@/constants/constants';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 
-const baseURL = 'http://localhost:3000';
+const baseURL = backendUrl;
 const instance = axios.create({ baseURL });
 
 

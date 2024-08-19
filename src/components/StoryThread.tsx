@@ -5,7 +5,7 @@ import { post } from '@/helpers/request';
 import GameLoader from './GameLoader';
 import Accordion from '@mui/material/Accordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Button, CardMedia, Typography } from '@mui/material';
+import { Alert, Button, CardMedia, Typography } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { style } from '@mui/system';
@@ -43,6 +43,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries }) => {
   const [readySubmit, setReadySubmit] = React.useState<boolean>(false);
   const [dialogTitle, setDialogTitle] = React.useState<string>('Story context');
   const [dayInput, setDayInput] = React.useState<string>('');
+  const [showAlert, setShowAlert] = React.useState<boolean>(false);
 
   const getStoryDetails = async () => {
     const response = await post('/story/get', { email: localStorage.getItem('email') });
@@ -77,6 +78,11 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries }) => {
     e.preventDefault();
     setShowLoader(true);
     const response = await post('/story/investigate', { email: localStorage.getItem('email'), data: investigationInput });
+    
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false)
+    },3000);
     setShowLoader(false);
     if (response.status === 200) {
       setInvestigationInput('');
@@ -161,8 +167,12 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries }) => {
           </form>
         </div>
       }
+      { showAlert &&<Alert style={{position:'fixed', bottom:'20px', left:'45vw', zIndex: 1000}}  variant="filled" severity="success">
+  Investigation completed and Email thread sent !
+</Alert>}
     </div>
   );
 };
 
 export default StoryThread;
+

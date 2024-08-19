@@ -49,7 +49,8 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
 
   const handleClose = () => {
     setOpen(false);
-    window.location.reload();
+    if(title == 'Case results - Case closed.')
+      window.location.reload();
   };
 
   

@@ -15,6 +15,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import axios from 'axios';
 import { string } from 'prop-types';
 import { orange } from '@mui/material/colors';
+import { Alert } from '@mui/material';
+import { backendUrl, frontEndUrl } from '@/constants/constants';
 
 
 const Header: React.FC = () => {
@@ -29,6 +31,8 @@ const Header: React.FC = () => {
 
   const [friends, setFriends] = useState<Contact[]>([]);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
+  const [showAlert, setShowAlert ] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<String> ('Invited successfully, and shared the email threads !');
 
   interface ContactFetchRequest {
     email: string;
@@ -63,7 +67,7 @@ const Header: React.FC = () => {
 
 
   const getContacts = async ({ email, grantID }: ContactFetchRequest): Promise<Contact[]> => {
-    const contacts = await axios.post<{ data: Contact[] }>(`http://localhost:3000/contacts/list`, {
+    const contacts = await axios.post<{ data: Contact[] }>(`${backendUrl}/contacts/list`, {
       email,
       grantID
     })
@@ -88,8 +92,11 @@ const Header: React.FC = () => {
 
   const inviteFriend = async (id: String) => {
     console.log("Inviting " + id);
+    setState({'right':false})
+    setShowAlert(true);
+    setAlertMessage('Inviting your friend ... ')
     try {
-      await axios.post(`http://localhost:3000/contacts/invite`, {
+      await axios.post(`${backendUrl}/contacts/invite`, {
         id,
         email: localStorage.getItem("email")
       })
@@ -100,7 +107,11 @@ const Header: React.FC = () => {
       setState({
         right: false
       });
-      window.location.reload();
+      setAlertMessage('Invited successfully, and shared the email threads !')
+      setTimeout(() => {
+        setShowAlert(false);
+        window.location.reload();
+      },5000);
     }
 
 
@@ -147,7 +158,7 @@ const Header: React.FC = () => {
     localStorage.clear();
     localStorage.removeItem('email');
     localStorage.removeItem('id');
-    window.location.href = 'http://localhost:3001';
+    window.location.href = frontEndUrl;
   }
 
   const back = () => {
@@ -166,7 +177,7 @@ const Header: React.FC = () => {
         </div>
         <div className={styles.solveButton}>
           <React.Fragment key={'invite'}>
-            <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' , fontStyle: 'italic'}}>{'Solve with your friends!'}</Button>
+            <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' , fontStyle: 'italic'}}><span onClick={fetchContacts}>{'Solve with your friends!'}</span></Button>
             <Drawer
               anchor={'right'}
               open={state['right']}
@@ -182,6 +193,9 @@ const Header: React.FC = () => {
           }
         </div>
       </div>
+      { showAlert && <Alert style={{position:'absolute',bottom:'20px', left:'23vw', zIndex: 1000}} variant="filled" severity="success">
+        {alertMessage}
+      </Alert>}
     </header>
   );
 }

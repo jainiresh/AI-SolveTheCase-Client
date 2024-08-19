@@ -6,6 +6,7 @@ import styles from '../styles/Story.module.css'
 import GameLoader from './GameLoader';
 import {post} from '../helpers/request'
 import StoryThread from './StoryThread';
+import { Alert } from '@mui/material';
 
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
@@ -31,6 +32,7 @@ export const Story: React.FC = () => {
   const [doesStoryExists, setDoesStoryExists] = useState<boolean>(true);
   const [storyInput, setStoryInput] = useState<string>('');
   const [showLoader, setShowLoader] = useState<boolean>(true);
+  const [showAlert, setShowAlert] = React.useState(false);
   let id = searchParams.get("id");
   let email = searchParams.get("email")
 
@@ -51,11 +53,15 @@ export const Story: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setShowLoader(true);
-    const storyCreationResponse = await post("/story/create", {
+    await post("/story/create", {
         data:storyInput,
         email: localStorage.getItem('email')
     }
   )
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false)
+    },3000);
     setDoesStoryExists(true)
     setShowLoader(false)
     console.log(storyInput)
@@ -73,6 +79,9 @@ export const Story: React.FC = () => {
       : 
      <StartStoryHome storyInput={storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
   </div>
+  {showAlert && <Alert style={{position:'fixed', bottom:'100px', left:'45vw', zIndex: 1000}} variant="filled" severity="success">
+       Story created successfully !
+      </Alert>}
     </div>
   );
 };
