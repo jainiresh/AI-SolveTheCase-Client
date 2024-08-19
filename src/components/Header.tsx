@@ -14,6 +14,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import axios from 'axios';
 import { string } from 'prop-types';
+import { orange } from '@mui/material/colors';
 
 
 const Header: React.FC = () => {
@@ -24,6 +25,7 @@ const Header: React.FC = () => {
   const [state, setState] = useState({
     right: false
   });
+  const [allInvited, setAllInvited] = useState(false);
 
   const [friends, setFriends] = useState<Contact[]>([]);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
@@ -37,6 +39,11 @@ const Header: React.FC = () => {
     _id: string; contactName: string; email: string, isInvited: boolean;
   }
 
+
+  useEffect(()=>{
+    fetchContacts();
+  },[]);
+
   const fetchContacts = async () => {
     setButtonDisabled(true);
     let email = localStorage.getItem("email");
@@ -47,6 +54,11 @@ const Header: React.FC = () => {
       setFriends(contacts)
     }
     setButtonDisabled(false)
+    let unInvitedFriends = friends.filter(friend => !friend.isInvited)
+    if(!unInvitedFriends)
+      setAllInvited(true);
+
+    console.log("All invited " + allInvited)
   }
 
 
@@ -96,12 +108,14 @@ const Header: React.FC = () => {
 
   const list = (anchor: Anchor) => (
     <Box
-
       role="presentation"
       onKeyDown={toggleDrawer(anchor, false)}
       sx={{ width: 550 }}
-    > {friends.length == 0 ? <List><Button href='#' type='primary' style={{ marginLeft: '13rem', marginTop: '40rem' }} disabled={buttonDisabled} onClick={() => fetchContacts()}>Fetch Contacts</Button></List> :
+    >
+      <ListItemText primary={'Invite: '} style={{ marginLeft: '1rem', marginTop: '1rem' }} /> 
+      {friends.length == 0 ? <List><Button href='#' type='primary' style={{ marginLeft: '13rem', marginTop: '40rem' }} disabled={buttonDisabled} onClick={() => fetchContacts()}>Fetch Contacts</Button></List> :
       <List>
+        {allInvited && <ListItemButton disabled><ListItemText style={{fontStyle:'italic', marginLeft:'10rem'}}>You have no contacts here</ListItemText></ListItemButton>}
         {friends.map((friend, index) => (
           friend.isInvited == false && <ListItem key={friend._id} disablePadding onClick={() => inviteFriend(friend._id)}>
             <ListItemButton>
@@ -129,13 +143,30 @@ const Header: React.FC = () => {
     </Box>
   );
 
+  const logout = () => {
+    localStorage.clear();
+    localStorage.removeItem('email');
+    localStorage.removeItem('id');
+    window.location.href = 'http://localhost:3001';
+  }
+
+  const back = () => {
+    window.location.reload();
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>Mystery Game</div>
       <div className={styles.actions}>
+      <div>
+          <Button style={{color:'whitesmoke',  marginRight: '1rem'}} onClick={() => back()}>{'Back'}</Button>
+        </div>
+        <div>
+          <Button style={{color:'whitesmoke',  marginRight: '1rem'}} onClick={() => logout()}>{'Logout'}</Button>
+        </div>
         <div className={styles.solveButton}>
           <React.Fragment key={'invite'}>
-            <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' }}>{'Solve with your friends!'}</Button>
+            <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' , fontStyle: 'italic'}}>{'Solve with your friends!'}</Button>
             <Drawer
               anchor={'right'}
               open={state['right']}
@@ -148,7 +179,6 @@ const Header: React.FC = () => {
         <div className={styles.userIcon}>
           <img src="/detective.svg" alt="User Icon" className={styles.iconImage} />
           {
-
           }
         </div>
       </div>

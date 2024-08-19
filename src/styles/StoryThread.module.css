@@ -97,24 +97,31 @@
 
 .investigationForm {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   padding: 10px;
-  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -1px 5px rgba(121, 114, 114, 0.1);
   z-index: 1000;
 }
 
 .investigationInput {
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
+  width: 74vw;
   border: 1px solid #da8b57;
   border-radius: 8px;
   margin-bottom: 10px;
   background: #262626;
   color: #da8b57;
+}
+
+.investigationInput::placeholder{
+  text-align: center;
+  padding-top: 0.8rem;
 }
 
 .submitButton {
@@ -123,7 +130,11 @@
   color: white;
   padding: 10px 20px;
   text-align: center;
-  font-size: 16px;
+  width: 25vw;
+  height: 6.5vh;
+  font-size: 36px;
+  font-weight: bolder;
+  font-family: 'Cambria, Cochin, Georgia, Times, Times New Roman, serif';
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;

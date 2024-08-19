@@ -12,10 +12,24 @@
   z-index: 1000;
 }
 
+/* .logo {
+  font-size: 36px;
+  color: #da8b57;
+  font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+  font-weight: bold;
+} */
+
 .logo {
   font-size: 36px;
   color: #da8b57;
+  font-family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
   font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.2) rotate(0deg);
+  cursor:crosshair  ;
 }
 
 .actions {

@@ -4,6 +4,7 @@ import styles from '../styles/StartStory.module.css';
 import Instructions from './Instructions';
 import {post} from '../helpers/request'
 import MysteryInputForm from './MysteryInput';
+import { testDay } from '@/constants/constants';
 
 interface StoryEntryInput {
     storyInput: string;
@@ -23,7 +24,8 @@ const [storyContext, setStoryContext] = useState<string>('empty')
     <div className={styles.backgroundContainer}>
       <div className={styles.content}>
       {storyContext=='empty' && <Instructions handleUserStoryInput ={handleUserStoryInput}/>}
-      {storyContext=='ownStory' && <MysteryInputForm storyInput={storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
+      {storyContext=='ownStory' && <MysteryInputForm storyInput={ storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
+      {storyContext=='aiStory' && <MysteryInputForm storyInput={ testDay} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
     </div>
     </div>
   );

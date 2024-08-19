@@ -50,11 +50,14 @@ export const Story: React.FC = () => {
  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setShowLoader(true);
     const storyCreationResponse = await post("/story/create", {
-        storyInput,
+        data:storyInput,
         email: localStorage.getItem('email')
-    })
+    }
+  )
     setDoesStoryExists(true)
+    setShowLoader(false)
     console.log(storyInput)
   };
 
@@ -63,7 +66,7 @@ export const Story: React.FC = () => {
   
     <div className={styles.container}> 
     <div>
-    {showLoader ? <GameLoader/> 
+    {showLoader ? <GameLoader loadingText='Creating'/> 
       : 
       doesStoryExists ? 
       <StoryThread entries={sampleEntries}/> 
