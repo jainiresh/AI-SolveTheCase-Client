@@ -58,8 +58,6 @@
     justify-content: space-between;
   } */
 
-
-
 .author {
   font-weight: bold;
   color: #da8b57;
@@ -79,7 +77,6 @@
 .imageButton:hover {
   background-color: #5e5e5e;
 }
-
 
 .image {
   font-size: 14px;
@@ -119,7 +116,7 @@
   color: #da8b57;
 }
 
-.investigationInput::placeholder{
+.investigationInput::placeholder {
   text-align: center;
   padding-top: 0.8rem;
 }
@@ -131,7 +128,7 @@
   padding: 10px 20px;
   text-align: center;
   width: 25vw;
-  height: 6.5vh;
+  height: fit-content;
   font-size: 36px;
   font-weight: bolder;
   font-family: 'Cambria, Cochin, Georgia, Times, Times New Roman, serif';
@@ -147,4 +144,33 @@
 .submitButton:active {
   background-color: #cc5200;
   transform: translateY(2px);
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+  border: 1px solid #14130b; /* Border around the list */
+  border-radius: 8px;
+  padding: 20px;
+  background: #070707; /* Light background for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+
+.list li {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #afac9f; /* Text color */
+  position: relative;
+  padding-left: 20px;
+}
+
+.list li::before {
+  content: '•'; /* Bullet points */
+  color: #ffffff; /* Bullet color */
+  position: absolute;
+  left: 0;
+  font-size: 24px;
+  line-height: 1.6;
 }

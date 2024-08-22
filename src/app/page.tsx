@@ -14,13 +14,13 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Mystery Game Solver</title>
+        <title>Mystery Trails</title>
         <meta name="description" content="Dive into the mystery and solve intriguing puzzles!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.hero}>
-        <h1 className={styles.title}>Welcome to the Mystery Game Solver</h1>
+        <h1 className={styles.title}>Welcome to the Mystery Trails</h1>
         <p className={styles.description}>
         Are you ready to solve some mysteries? Let`s dive into the unknown!
         </p>

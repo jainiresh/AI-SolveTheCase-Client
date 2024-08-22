@@ -33,6 +33,7 @@ export const Story: React.FC = () => {
   const [storyInput, setStoryInput] = useState<string>('');
   const [showLoader, setShowLoader] = useState<boolean>(true);
   const [showAlert, setShowAlert] = React.useState(false);
+  const [firstTime, setFirstTime] = React.useState(false);
   let id = searchParams.get("id");
   let email = searchParams.get("email")
 
@@ -59,6 +60,7 @@ export const Story: React.FC = () => {
     }
   )
     setShowAlert(true);
+    setFirstTime(true);
     setTimeout(() => {
       setShowAlert(false)
     },3000);
@@ -74,7 +76,7 @@ export const Story: React.FC = () => {
     {showLoader ? <GameLoader loadingText='Creating'/> 
       : 
       doesStoryExists ? 
-      <StoryThread entries={sampleEntries}/> 
+      <StoryThread entries={sampleEntries} firstTime={firstTime}/> 
       : 
      <StartStoryHome storyInput={storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
   </div>

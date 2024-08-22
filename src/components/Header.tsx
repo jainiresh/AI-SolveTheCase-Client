@@ -167,7 +167,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>Mystery Game</div>
+      <div className={styles.logo}>Mystery Trails</div>
       <div className={styles.actions}>
       <div>
           <Button style={{color:'whitesmoke',  marginRight: '1rem'}} onClick={() => back()}>{'Back'}</Button>

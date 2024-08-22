@@ -30,9 +30,10 @@ interface StoryThreadProp {
 
 interface StoryThreadProps {
   entries: StoryEntry[];
+  firstTime: boolean;
 }
 
-const StoryThread: React.FC<StoryThreadProps> = ({ entries }) => {
+const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
   const [showLoader, setShowLoader] = useState<boolean>(true);
   const [investigationInput, setInvestigationInput] = useState<string>('');
   const [storyDescription, setStoryDescription] = useState<string>('');
@@ -116,6 +117,9 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries }) => {
 
   useEffect(() => {
     getStoryDetails();
+    if(firstTime){
+      setOpenStoryDialog(true);
+    }
   }, []);
 
   const openDialog= () =>{
@@ -151,7 +155,18 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries }) => {
           </AccordionDetails>
         </Accordion>
       ))}
-      <Button disabled={storyThreads.length == 0} onClick={() => setReadySubmit(prevState => !prevState)}><Typography  color={'gray'}  >{!readySubmit ? storyThreads.length == 0 ? `No investigations made yet` : `Ready with your answer ? Click here to submit` :`Investigate more...` }</Typography></Button>
+      <Button  disabled={storyThreads.length == 0} onClick={() => setReadySubmit(prevState => !prevState)}><Typography  >{!readySubmit ? storyThreads.length == 0 ? <>
+      {/* <span style={{color:'gray'}}>No investigations made yet</span>
+      <br /> */}
+     
+      <span style={{color:'gray'}}>Here are a few samples to help you form your investigation.</span></> : `Ready with your answer ? Click here to submit` :`Click here to Investigate more...` }</Typography></Button>
+      {storyThreads.length != 0 && 
+      <ul className={styles.list}>
+      <li><strong>The guy i met at the park, carried a large suitcase, and seemed suspicious</strong></li>
+      <li><strong>My friend &lt;Person`s name&gt; gave me a suspicious call, what was it about ?</strong></li>
+      <li><strong>The guy at the reception, had strange documents under his chair, what was it about ?</strong></li>
+      <li><strong>My trainer &lt;Person name&gt; seemed to be talking about a robbery to someone on the phone, what was it about ?</strong></li>
+      </ul>}
     </div>
           <form className={styles.investigationForm} onSubmit={!readySubmit ? handleInvestigation: handleSubmit}>
             <textarea
