@@ -126,9 +126,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
   return (
     <div className={styles.pageContainer}>
       {<FullScreenDialog open={openStoryDialog} setOpen={setOpenStoryDialog} storyDescription={storyDescription} storyMainPictureUrl={storyMainPictureUrl} title={dialogTitle} dayInput={dayInput}/>}
-      {showLoader ? <div>
-        We have sent you a suprise to your email!
-        <GameLoader loadingText='Investigate'/> </div> :
+      {showLoader ? <GameLoader loadingText='Investigate'/> :
         <div className={styles.container}>
           <div className={styles.header}>
             <Button onClick={() => { openDialog(); }} className={styles.contextButton}>
@@ -142,14 +140,13 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
           <div className={styles.content}>
             {storyThreads.map((entry, index) => (
               <Accordion key={index} style={{ backgroundColor: 'transparent' }} defaultExpanded={index + 1 === storyThreads.length}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#da8b57' }} />}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: 'white' }} />}>
                   <span className={styles.author}>{`${entry.author1} ${index + 1}`}</span>
                 </AccordionSummary>
                 <AccordionDetails className={styles.storyEntry}>
                   <span className={styles.content}>{entry.query}</span>
                   <hr /><br />
                   <div>
-
                     <div className={styles.image}>
                       <Image src={`${entry.imageUrl}500x500/`} width={'700'} height={'500'} alt='image' />
                     </div>
@@ -176,6 +173,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
     </div>
           <form className={styles.investigationForm} onSubmit={!readySubmit ? handleInvestigation: handleSubmit}>
             <textarea
+              
               className={styles.investigationInput}
               placeholder={readySubmit ? "Tell me who do you think the culprit is, along with a short reason.": "Enter your investigation here... You can question or ask about anyone or anyting in your story context."}
               value={investigationInput}
@@ -187,8 +185,8 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
         </div>
     
       { showAlert &&<Alert style={{position:'fixed', bottom:'20px', left:'45vw', zIndex: 1000}}  variant="filled" severity="success">
-        Investigation completed and Email thread sent !
-    </Alert>}
+  Investigation completed and Email thread sent !
+</Alert>}
     </div>}
     </div>
   );
