@@ -10,6 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import FullScreenDialog from './FullScreenDialog';
 import Image from './Image';
+import { ExpandCircleDown } from '@mui/icons-material';
 
 interface StoryEntry {
   id: number;
@@ -137,10 +138,10 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
           <div className={styles.threadContent}>
       {storyThreads.map((entry, index) => (
         <Accordion key={index} style={{ backgroundColor: 'transparent' }} defaultExpanded={index+1 == storyThreads.length}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <AccordionSummary  expandIcon={<ExpandMoreIcon style={{color:'#da8b57'}}/>}>
             <span className={styles.author}>{`${entry.author1} ${index+1}`}</span>
           </AccordionSummary>
-          <AccordionDetails className={styles.storyEntry}>
+          <AccordionDetails style={{color:'white'}} className={styles.storyEntry}>
               <span className={styles.content}>{entry.query}</span>
               <hr /><br />
               <div >
@@ -155,24 +156,27 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
           </AccordionDetails>
         </Accordion>
       ))}
-      <Button  disabled={storyThreads.length == 0} onClick={() => setReadySubmit(prevState => !prevState)}><Typography  >{!readySubmit ? storyThreads.length == 0 ? <>
-      {/* <span style={{color:'gray'}}>No investigations made yet</span>
-      <br /> */}
-     
-      <span style={{color:'gray'}}>Here are a few samples to help you form your investigation.</span></> : `Ready with your answer ? Click here to submit` :`Click here to Investigate more...` }</Typography></Button>
-      {storyThreads.length != 0 && 
+      <Accordion style={{backgroundColor:'transparent', color:'white'}}> 
+        <AccordionSummary expandIcon={<ExpandMoreIcon style={{color:'white'}}/>}>
+          <Typography style={{color:'whitesmoke'}}>Here are a few sample investigations to help you form your investigation.</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
       <ul className={styles.list}>
       <li><strong>The guy i met at the park, carried a large suitcase, and seemed suspicious</strong></li>
       <li><strong>My friend &lt;Person`s name&gt; gave me a suspicious call, what was it about ?</strong></li>
       <li><strong>The guy at the reception, had strange documents under his chair, what was it about ?</strong></li>
       <li><strong>My trainer &lt;Person name&gt; seemed to be talking about a robbery to someone on the phone, what was it about ?</strong></li>
-      </ul>}
+      </ul>
+      </AccordionDetails>
+      </Accordion>
+      <Button  disabled={storyThreads.length == 0} style={{color:storyThreads.length == 0? 'gray' : ''}} onClick={() => setReadySubmit(prevState => !prevState)}><Typography  >{!readySubmit ? storyThreads.length == 0 ? `Your first investigation will appear here !` : `Ready with your answer ? Click here to submit` :`Click here to Investigate more...` }</Typography></Button>
+      
     </div>
           <form className={styles.investigationForm} onSubmit={!readySubmit ? handleInvestigation: handleSubmit}>
             <textarea
               
               className={styles.investigationInput}
-              placeholder={readySubmit ? "Tell me who do you think the culprit is, along with a short reason.": "Enter your thoughts for the next investigation..."}
+              placeholder={readySubmit ? "Tell me who do you think the culprit is, along with a short reason.": "Enter your investigation here... You can question or ask about anyone or anyting in your story context."}
               value={investigationInput}
               onChange={handleInputChange}
               required
