@@ -1,3 +1,159 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 2rem 10rem;
+}
+
+.container {
+  width: 80vw; /* Adjust to fit your needs */
+  max-width: 1200px; /* Adjust to fit your needs */
+  height: 80vh; /* Adjust to fit your needs */
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contextButton {
+  background-color: #3a3a3a;
+  color: #da8b57;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.contextButton:hover {
+  background-color: #5e5e5e;
+}
+
+.submitToggleButton {
+  background: none;
+  border: none;
+  color: #da8b57;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submitToggleButton:hover {
+  color: #ff6600;
+}
+
+.submitButton {
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  height: 4rem;
+}
+
+.submitButton:hover {
+  background-color: #e55b00;
+}
+
+.submitButton:active {
+  background-color: #cc5200;
+  transform: translateY(2px);
+}
+
+.investigationForm {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #262626;
+  padding: 10px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.investigationInput {
+  padding: 12px;
+  font-size: 18px;
+  width: 80%;
+  border: 2px solid #da8b57;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  color: #ffcc00;
+  font-family: 'Lucida Console', Monaco, monospace;
+  box-shadow: inset 0 0 10px #000000;
+  transition: all 0.3s ease;
+  height: 4rem;
+}
+
+.investigationInput:focus {
+  outline: none;
+  border-color: #ffcc00;
+  box-shadow: 0 0 15px #ffcc00;
+  background: linear-gradient(145deg, #3b3b3b, #2a2a2a);
+}
+
+.investigationInput::placeholder {
+  color: #ffcc00;
+  opacity: 0.8;
+  text-align: center;
+  padding-top: 0.8rem;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.investigationInput:hover {
+  border-color: #e5b700;
+}
+
+
+.content {
+  font-size: 16px;
+  color: #da8b57;
+  padding-bottom: 1rem;
+  overflow-y: auto;
+  max-height: calc(80vh - 150px); /* Adjust based on header and form height */
+}
+
+
+
+.author {
+  font-weight: bold;
+  color: #da8b57;
+  padding-bottom: 0.5rem;
+}
+
+.image {
+  font-size: 14px;
+  color: #999;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  width: fit-content;
+}
+
+
+
 .threadContainer {
   display: flex;
   flex-direction: column;
@@ -52,11 +208,6 @@
   color: #da8b57;
 }
 
-/* .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  } */
 
 .author {
   font-weight: bold;
@@ -84,66 +235,6 @@
   margin-top: 2rem;
   padding-bottom: 2rem;
   width: fit-content;
-}
-
-.content {
-  font-size: 16px;
-  color: #da8b57;
-  padding-bottom: 1rem;
-}
-
-.investigationForm {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  box-shadow: 0 -1px 5px rgba(121, 114, 114, 0.1);
-  z-index: 1000;
-}
-
-.investigationInput {
-  padding: 10px;
-  font-size: 20px;
-  width: 74vw;
-  border: 1px solid #da8b57;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  background: #262626;
-  color: #da8b57;
-}
-
-.investigationInput::placeholder {
-  text-align: center;
-  padding-top: 0.8rem;
-}
-
-.submitButton {
-  background-color: #ff6600;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  width: 25vw;
-  height: fit-content;
-  font-size: 36px;
-  font-weight: bolder;
-  font-family: 'Cambria, Cochin, Georgia, Times, Times New Roman, serif';
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.submitButton:hover {
-  background-color: #e55b00;
-}
-
-.submitButton:active {
-  background-color: #cc5200;
-  transform: translateY(2px);
 }
 
 .list {

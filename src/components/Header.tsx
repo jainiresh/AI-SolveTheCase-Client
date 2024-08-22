@@ -44,9 +44,7 @@ const Header: React.FC = () => {
   }
 
 
-  useEffect(()=>{
-    fetchContacts();
-  },[]);
+
 
   const fetchContacts = async () => {
     setButtonDisabled(true);

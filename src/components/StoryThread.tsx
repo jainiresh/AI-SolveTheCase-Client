@@ -15,15 +15,12 @@ import { ExpandCircleDown } from '@mui/icons-material';
 interface StoryEntry {
   id: number;
   author1: string;
-  author2: string;
   query: string;
-  response: string;
   timestamp: string;
 }
 
 interface StoryThreadProp {
   author1: string;
-  author2: string;
   query: string;
   response: string;
   imageUrl: string
@@ -62,7 +59,6 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
       entries.push({
         author1: 'Investigation query',
         query: storyLine.queries[i],
-        author2: 'Response',
         response: storyLine.queryResponses[i],
         imageUrl: storyLine.investigationImages[i]
       })
@@ -93,7 +89,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
         {
           author1: 'Investigation query', 
           query: investigationInput,
-          author2: 'Response',
+
            response: investigationResult, 
            imageUrl: imageUrl
         }
@@ -128,34 +124,42 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
   }
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       {<FullScreenDialog open={openStoryDialog} setOpen={setOpenStoryDialog} storyDescription={storyDescription} storyMainPictureUrl={storyMainPictureUrl} title={dialogTitle} dayInput={dayInput}/>}
-      {showLoader ? <GameLoader loadingText='Investigate'/> :
-        <div className={styles.threadContainer}>
-          <div style={{display:'flex', flexDirection:'row'}}>
-          <Button onClick={() => {openDialog();}}><Typography color={'#da8b57'} >Click here to View Story Context / Your Day</Typography></Button>
+      {showLoader ? <div>
+        We have sent you a suprise to your email!
+        <GameLoader loadingText='Investigate'/> </div> :
+        <div className={styles.container}>
+          <div className={styles.header}>
+            <Button onClick={() => { openDialog(); }} className={styles.contextButton}>
+              <Typography color={'#da8b57'}>View Story Context / Your Day</Typography>
+            </Button>
+            <Button disabled={storyThreads.length === 0} onClick={() => setReadySubmit(prevState => !prevState)} className={styles.contextButton}>
+              <Typography color={'gray'}>{!readySubmit ? (storyThreads.length === 0 ? `No investigations made yet` : `Ready with your answer? Click here to submit`) : `Investigate more...`}</Typography>
+            </Button>
           </div>
           <div className={styles.threadContent}>
-      {storyThreads.map((entry, index) => (
-        <Accordion key={index} style={{ backgroundColor: 'transparent' }} defaultExpanded={index+1 == storyThreads.length}>
-          <AccordionSummary  expandIcon={<ExpandMoreIcon style={{color:'#da8b57'}}/>}>
-            <span className={styles.author}>{`${entry.author1} ${index+1}`}</span>
-          </AccordionSummary>
-          <AccordionDetails style={{color:'white'}} className={styles.storyEntry}>
-              <span className={styles.content}>{entry.query}</span>
-              <hr /><br />
-              <div >
-                <span className={styles.author}>{entry.author2}</span><br />
-                <div className={styles.image}>
-                  <Image src={`${entry.imageUrl}500x500/`} width={'700'} height={'500'} alt='image'/>
-                </div>
-              </div>
-              <div className={styles.content}>
-                {entry.response}
-              </div>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+          <div className={styles.content}>
+            {storyThreads.map((entry, index) => (
+              <Accordion key={index} style={{ backgroundColor: 'transparent' }} defaultExpanded={index + 1 === storyThreads.length}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon style={{ color: '#da8b57' }} />}>
+                  <span className={styles.author}>{`${entry.author1} ${index + 1}`}</span>
+                </AccordionSummary>
+                <AccordionDetails className={styles.storyEntry}>
+                  <span className={styles.content}>{entry.query}</span>
+                  <hr /><br />
+                  <div>
+
+                    <div className={styles.image}>
+                      <Image src={`${entry.imageUrl}500x500/`} width={'700'} height={'500'} alt='image' />
+                    </div>
+                  </div>
+                  <div className={styles.content}>
+                    {entry.response}
+                  </div>
+                </AccordionDetails>
+              </Accordion>
+            ))}
       <Accordion style={{backgroundColor:'transparent', color:'white'}}> 
         <AccordionSummary expandIcon={<ExpandMoreIcon style={{color:'white'}}/>}>
           <Typography style={{color:'whitesmoke'}}>Here are a few sample investigations to help you form your investigation.</Typography>
@@ -169,12 +173,9 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
       </ul>
       </AccordionDetails>
       </Accordion>
-      <Button  disabled={storyThreads.length == 0} style={{color:storyThreads.length == 0? 'gray' : ''}} onClick={() => setReadySubmit(prevState => !prevState)}><Typography  >{!readySubmit ? storyThreads.length == 0 ? `Your first investigation will appear here !` : `Ready with your answer ? Click here to submit` :`Click here to Investigate more...` }</Typography></Button>
-      
     </div>
           <form className={styles.investigationForm} onSubmit={!readySubmit ? handleInvestigation: handleSubmit}>
             <textarea
-              
               className={styles.investigationInput}
               placeholder={readySubmit ? "Tell me who do you think the culprit is, along with a short reason.": "Enter your investigation here... You can question or ask about anyone or anyting in your story context."}
               value={investigationInput}
@@ -184,10 +185,11 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
             <Button type="submit" style={{backgroundColor:readySubmit ? 'green': ''}} className={styles.submitButton}><Typography variant='h5'>{readySubmit ? "Submit Answer" : "Investigate"}</Typography></Button>
           </form>
         </div>
-      }
+    
       { showAlert &&<Alert style={{position:'fixed', bottom:'20px', left:'45vw', zIndex: 1000}}  variant="filled" severity="success">
-  Investigation completed and Email thread sent !
-</Alert>}
+        Investigation completed and Email thread sent !
+    </Alert>}
+    </div>}
     </div>
   );
 };
