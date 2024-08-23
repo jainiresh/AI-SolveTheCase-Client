@@ -12,7 +12,7 @@ const Instructions: React.FC<InstructionsProps> = ({handleUserStoryInput}) => {
       <h1 className={styles.title}>How to play Mystery Trails</h1>
       <p className={styles.description}>
         Welcome to Mystery trails! Here you’ll be tasked with solving a thrilling case, which happens to arise from the detailed information about your day or experience, that you are gonna enter shortly. </p><br />
-        <p style={{fontWeight:'bold'}}>Your final goal is to piece together the clues and identify the culprit, that is gonna be one of the people whom you described that you have met.</p> <br /> 
+        <p style={{fontWeight:'bold', color:'white'}}>Your final goal is to piece together the clues and identify the culprit, that is gonna be one of the people whom you described that you have met.</p> <br /> 
         <p className={styles.description} style={{marginBottom: '1rem'}}> Ready to get started ? 
           Here’s what we need from you:
       </p>
