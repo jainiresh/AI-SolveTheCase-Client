@@ -51,18 +51,18 @@ const MysteryInputForm: React.FC<StoryEntryInput> = ({ storyInput, setStoryInput
         </form>
       </div>
       <div>
-        <Card style={{ marginTop: '5rem', backgroundColor:'#ee8641', cursor:'pointer' }}>
-          <CardContent onClick={copyText}>
+        {/* <Card style={{ marginTop: '5rem', backgroundColor:'#ee8641', cursor:'pointer' }}> */}
+          {/* <CardContent onClick={copyText}> */}
             {/* <Typography style={{fontSize:'24px'}}>Too tired to type out your day ? Try the AI generated content of a day.</Typography> */}
-            <Typography style={{ marginLeft:'1rem', fontSize:'20px', fontWeight:'bolder' }}> Click here to copy a sample AI generated content
+            <Typography  onClick={copyText} className={styles.blinkingText} style={{ marginLeft:'1rem', fontSize:'20px', cursor:'pointer', fontWeight:'bolder', color:'#ee8641', marginTop: '3rem' }}> Click here to copy a sample AI generated content
               <IconButton >
-                <ContentCopy />
+                <ContentCopy style={{color:'#ee8641'}}/>
               </IconButton>
             </Typography>
-          </CardContent>
-        </Card>
+          {/* </CardContent> */}
+        {/* </Card> */}
       </div>
-      {showAlert && <Alert style={{position:'fixed', bottom:'20px', left:'45vw', zIndex: 1000}} variant="filled" severity="success">
+      {showAlert && <Alert style={{position:'fixed', bottom:'40px', left:'45vw', zIndex: 1000, scale:'1.6'}} variant="filled" severity="success">
         Message copied successfully !
       </Alert>}
     </div>

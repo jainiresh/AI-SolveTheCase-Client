@@ -60,3 +60,12 @@
     background-color: #ee8641; /* Slightly darker on hover */
   }
   
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+  
+  .blinkingText {
+    animation: blink 3s infinite;
+  }

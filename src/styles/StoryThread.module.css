@@ -27,8 +27,8 @@
 }
 
 .contextButton {
-  background-color: #3a3a3a;
-  color: #da8b57;
+  background-color: #da8b57;
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -115,7 +115,7 @@
 }
 
 .investigationInput::placeholder {
-  color: #ffcc00;
+  color: #da8b57;
   opacity: 0.8;
   text-align: center;
   padding-top: 0.8rem;
@@ -263,4 +263,14 @@
   left: 0;
   font-size: 24px;
   line-height: 1.6;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.blinkingText {
+  animation: blink 3s infinite;
 }

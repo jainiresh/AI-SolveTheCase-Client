@@ -80,7 +80,7 @@ export const Story: React.FC = () => {
       : 
      <StartStoryHome storyInput={storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
   </div>
-  {showAlert && <Alert style={{position:'fixed', bottom:'100px', left:'45vw', zIndex: 1000}} variant="filled" severity="success">
+  {showAlert && <Alert style={{position:'fixed', bottom:'100px', left:'45vw', zIndex: 1000, scale:'1.6'}} variant="filled" severity="success">
        Story created successfully !
       </Alert>}
     </div>
