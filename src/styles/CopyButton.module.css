@@ -1,0 +1,50 @@
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #ee8641; }
+}
+
+
+/* YourStyles.module.css */
+
+.container {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border: 2px solid #ee8641; /* Border color */
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(255, 136, 65, 0.8); /* Glowing effect */
+}
+
+.typingText {
+    margin-left: 1rem;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bolder;
+    color: #ee8641;
+    margin-top: 3rem;
+}
+
+.iconButton {
+    color: #ee8641;
+    margin-left: 0.5rem;
+}
+
+.glow {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255, 136, 65, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 136, 65, 1);
+    }
+}

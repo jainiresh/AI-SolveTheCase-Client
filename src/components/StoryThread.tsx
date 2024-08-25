@@ -132,7 +132,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
             <Button onClick={() => { openDialog(); }} style={{backgroundColor:'black'}} className={styles.contextButton}>
               <Typography color={'#da8b57'}>View Story Context / Your Day</Typography>
             </Button>
-            <Button disabled={storyThreads.length === 0} onClick={() => setReadySubmit(prevState => !prevState)} className={`${styles.contextButton} ${styles.blinkingText}`}>
+            <Button disabled={storyThreads.length === 0} onClick={() => setReadySubmit(prevState => !prevState)} className={`${styles.contextButton} ${storyThreads.length == 0 ? styles.blinkingText : ''}`}>
               <Typography color={storyThreads.length == 0 ? 'gray' : ''}>{!readySubmit ? (storyThreads.length === 0 ? `No investigations made yet` : `Ready with your answer? Click here to submit`) : `Click here to Investigate more...`}</Typography>
             </Button>
           </div>

@@ -34,13 +34,6 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
     const [fullScreen, setFullScreen] = React.useState<boolean>(false);
     const [toggleType, setToggleType] = React.useState<string>('story');
 
-    React.useEffect(()=>{
-  
-      if(title == 'Case results - Case closed.')
-        setToggleType('answer');
-      else
-      setToggleType('story')
-    },[])
 
  
   const toggleFullScreen = () => {
@@ -49,6 +42,7 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
 
   const handleClose = () => {
     setOpen(false);
+    setToggleType('story')  
     if(title == 'Case results - Case closed.')
       window.location.reload();
   };
