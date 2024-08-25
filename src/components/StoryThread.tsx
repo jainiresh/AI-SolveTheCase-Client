@@ -42,6 +42,8 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
   const [dialogTitle, setDialogTitle] = React.useState<string>('Story context');
   const [dayInput, setDayInput] = React.useState<string>('');
   const [showAlert, setShowAlert] = React.useState<boolean>(false);
+  const [introGiven, setIntroGiven] = React.useState<boolean>(false);
+  
 
   const getStoryDetails = async () => {
     const response = await post('/story/get', { email: localStorage.getItem('email') });
@@ -125,14 +127,15 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
 
   return (
     <div className={styles.pageContainer}>
-      {<FullScreenDialog open={openStoryDialog} setOpen={setOpenStoryDialog} storyDescription={storyDescription} storyMainPictureUrl={storyMainPictureUrl} title={dialogTitle} dayInput={dayInput}/>}
+      {<FullScreenDialog introGiven={introGiven} open={!introGiven} setOpen={setOpenStoryDialog} storyDescription={storyDescription} storyMainPictureUrl={storyMainPictureUrl} title={dialogTitle} dayInput={dayInput} setIntroGiven={setIntroGiven}/>}
+      {<FullScreenDialog open={introGiven && openStoryDialog} setOpen={setOpenStoryDialog} storyDescription={storyDescription} storyMainPictureUrl={storyMainPictureUrl} title={dialogTitle} dayInput={dayInput} introGiven={introGiven} setIntroGiven={setIntroGiven}/>}
       {showLoader ? <GameLoader loadingText='Investigate'/> :
         <div className={styles.container}>
           <div className={styles.header}>
             <Button onClick={() => { openDialog(); }} style={{backgroundColor:'black'}} className={styles.contextButton}>
               <Typography color={'#da8b57'}>View Story Context / Your Day</Typography>
             </Button>
-            <Button disabled={storyThreads.length === 0} onClick={() => setReadySubmit(prevState => !prevState)} className={`${styles.contextButton} ${storyThreads.length == 0 ? styles.blinkingText : ''}`}>
+            <Button disabled={storyThreads.length === 0} style={{backgroundColor:storyThreads.length == 0 ? 'transparent':''}} onClick={() => setReadySubmit(prevState => !prevState)} className={`${styles.contextButton} ${storyThreads.length != 0 ? styles.blinkingText : ''}`}>
               <Typography color={storyThreads.length == 0 ? 'gray' : ''}>{!readySubmit ? (storyThreads.length === 0 ? `No investigations made yet` : `Ready with your answer? Click here to submit`) : `Click here to Investigate more...`}</Typography>
             </Button>
           </div>
@@ -157,7 +160,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
                 </AccordionDetails>
               </Accordion>
             ))}
-      <Accordion style={{backgroundColor:'transparent', color:'white'}}> 
+      <Accordion style={{backgroundColor:'transparent', color:'white'}} defaultExpanded={storyThreads.length == 0}> 
         <AccordionSummary expandIcon={<ExpandMoreIcon style={{color:'white'}}/>}>
           <Typography style={{color:'whitesmoke'}}>Here are a few sample investigations to help you form your investigation.</Typography>
         </AccordionSummary>

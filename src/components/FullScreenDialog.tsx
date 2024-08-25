@@ -26,11 +26,14 @@ interface FullScreenDialogProps{
     storyMainPictureUrl: string,
     storyDescription: string,
     title: string,
-    dayInput: string
+    dayInput: string,
+    introGiven: boolean
+    setIntroGiven: (introGiven:boolean) => void
 }
 
-export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, storyDescription, title='Story Context', dayInput}: FullScreenDialogProps) {
+export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, storyDescription, title='Story Context', dayInput, introGiven=false, setIntroGiven}: FullScreenDialogProps) {
 
+  console.log("Rendered")
     const [fullScreen, setFullScreen] = React.useState<boolean>(false);
     const [toggleType, setToggleType] = React.useState<string>('story');
 
@@ -42,6 +45,10 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
 
   const handleClose = () => {
     setOpen(false);
+    if(!introGiven)
+      setOpen(true)
+      setIntroGiven(true);
+
     setToggleType('story')  
     if(title == 'Case results - Case closed.')
       window.location.reload();
@@ -71,18 +78,19 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
             open={open}
             onClose={handleClose}
             TransitionComponent={Transition}
-            maxWidth={'xs'}
+            maxWidth={'lg'}
+        
         >
             <AppBar sx={{ position: 'relative', backgroundColor: '#262626', border:'1px solid #da8b57', display:'flex', flexDirection:'row', justifyContent:'space-between' }}  >
             <IconButton onClick={handleClose} style={{color:'white'}} >
                 <CloseIcon />
                 </IconButton>
                 <Toolbar >
-                <Typography variant="h6" component="div" >
+                {!introGiven ? <Typography>Introduction</Typography> : <Typography variant="h6" component="div" >
                 {toggleType == 'answer' ? title: <ToggleButtonGroup onChange={handleStoryDescToggle}>
                   {children}       
                 </ToggleButtonGroup>}
-                </Typography>
+                </Typography>}
             </Toolbar>
             <IconButton
              edge="start"
@@ -95,7 +103,12 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
             </IconButton>
             </AppBar>
             <Box sx={{ padding: 2 }}>
-          <Card>
+          {!introGiven ? <Card>
+           <CardContent><Typography>Hey Detective, You have been assigned a case to solve ! </Typography><br /><hr /> <br />
+           
+           <Typography>Upon closing this dialog box, you would receive a new case story, which is nothing but a crime that happened in your town.
+           The culprit is none other than, but someone you have mentioned in your day input.</Typography></CardContent>
+          </Card> : <Card>
             {toggleType == 'story' && <CardMedia
               component="img"   
               height={'100%'}
@@ -107,7 +120,7 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
                 {toggleType == 'story' || toggleType == 'answer' ? storyDescription : dayInput.replace('/\\n/g','\t')}
               </Typography>
             </CardContent>
-          </Card>
+          </Card>}
         </Box>
             
         </Dialog>
