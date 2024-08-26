@@ -10,7 +10,6 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardMedia, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { ExpandMoreSharp, FindInPage, FindReplaceOutlined, FullscreenExit, FullscreenSharp, HourglassBottomTwoTone } from '@mui/icons-material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {

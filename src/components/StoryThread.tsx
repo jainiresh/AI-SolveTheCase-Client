@@ -140,7 +140,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
             <Button onClick={() => { openDialog(); }} style={{backgroundColor:'black'}} className={styles.contextButton}>
               <Typography color={'#da8b57'}>View Story Context / Your Day</Typography>
             </Button>
-            <IconButton style={{color:'white', backgroundColor:'#da8b57', borderRadius:'10%', marginLeft:'0.5rem', padding:'none'}} onClick={() => openDialogForRules()}>
+            <IconButton style={{color:'#2b2b2b', backgroundColor:'#da8b57', borderRadius:'10%', marginLeft:'0.5rem', padding:'none'}} onClick={() => openDialogForRules()}>
               <Typography>Help</Typography>
               <QuestionMarkSharp style={{scale:'0.8'}}/>
             </IconButton>
