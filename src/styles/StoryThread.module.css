@@ -92,6 +92,17 @@
   box-sizing: border-box;
 }
 
+.investigationInput::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+/* Handle */
+.investigationInput::-webkit-scrollbar-thumb {
+  background: #da8b57; /* Color of the scroll handle */
+  border-radius: 12px; /* Match the border radius of the input */
+  box-shadow: inset 0 0 10px #000000; /* Match the box shadow of the input */
+}
+
 .investigationInput {
   padding: 12px;
   font-size: 18px;
@@ -105,6 +116,7 @@
   box-shadow: inset 0 0 10px #000000;
   transition: all 0.3s ease;
   height: 4rem;
+  resize: none;
 }
 
 .investigationInput:focus {
