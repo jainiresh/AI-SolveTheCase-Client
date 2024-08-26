@@ -33,6 +33,7 @@ const Header: React.FC = () => {
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   const [showAlert, setShowAlert ] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<String> ('Invited successfully, and shared the email threads !');
+  const [contactLoader, setContactLoader] = useState<Boolean>(false);
 
   interface ContactFetchRequest {
     email: string;
@@ -48,6 +49,7 @@ const Header: React.FC = () => {
 
   const fetchContacts = async () => {
     setButtonDisabled(true);
+    setContactLoader(true);
     let email = localStorage.getItem("email");
     let grantID = localStorage.getItem("id")
 
@@ -55,10 +57,13 @@ const Header: React.FC = () => {
       const contacts = await getContacts({ email, grantID });
       setFriends(contacts)
     }
-    setButtonDisabled(false)
+    
     let unInvitedFriends = friends.filter(friend => !friend.isInvited)
-    if(!unInvitedFriends)
+    if(!unInvitedFriends){
       setAllInvited(true);
+    }
+    setContactLoader(false);
+    setButtonDisabled(false)
 
     console.log("All invited " + allInvited)
   }
@@ -122,7 +127,7 @@ const Header: React.FC = () => {
       sx={{ width: 550 }}
     >
       <ListItemText primary={'Invite: '} style={{ marginLeft: '1rem', marginTop: '1rem' }} /> 
-      {friends.length == 0 ? <List><Button href='#' type='primary' style={{ marginLeft: '12rem', marginTop: '20rem' }} disabled={buttonDisabled} onClick={() => fetchContacts()}>FETCH CONTACTS</Button></List> :
+      {friends.length == 0 ? <List><Button href='#' type='primary' style={{ marginLeft: '12rem', marginTop: '20rem' }} disabled={buttonDisabled} onClick={() => fetchContacts()}>{contactLoader ? 'Fetching your contacts ... ' : 'FETCH CONTACTS'}</Button></List> :
       <List>
         {allInvited && <ListItemButton disabled><ListItemText style={{fontStyle:'italic', marginLeft:'10rem'}}>You have no contacts here</ListItemText></ListItemButton>}
         {friends.map((friend, index) => (

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/navigation'
 import styles from '../styles/Home.module.css';
 import { LOGIN_URL } from '@/constants/constants';
+import { Google } from '@mui/icons-material';
 
 export default function Home() {
   const router = useRouter()
@@ -24,9 +25,14 @@ export default function Home() {
         <p className={styles.description}>
         Are you ready to solve some mysteries? Let`s dive into the unknown!
         </p>
-        <button className={styles.signInButton} onClick={handleLogin}>
+        <div style={{display:'flex', justifyContent:'center'}}>
+        <button className={styles.signInButton}  onClick={handleLogin}>
+          <Google />
+          <span style={{paddingLeft:'1rem'}}>
           Sign in with Google and Get Started
+          </span>
         </button>
+        </div>
       </div>
     </div>
   );
