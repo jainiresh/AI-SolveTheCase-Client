@@ -56,7 +56,8 @@ export const Story: React.FC = () => {
     setShowLoader(true);
     const storyCreationResponse = await post("/story/create", {
         data:storyInput,
-        email: localStorage.getItem('email')
+        email: localStorage.getItem('email'),
+        grantID: localStorage.getItem('id')
     }
   )
     setShowAlert(true);

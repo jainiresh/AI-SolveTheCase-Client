@@ -178,7 +178,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
             <textarea
               
               className={styles.investigationInput}
-              placeholder={readySubmit ? "Tell me who do you think the culprit is, along with a short reason.": "Enter your investigation here... You can question or ask about anyone or anyting in your story context."}
+              placeholder={readySubmit ? "Tell me who do you think the culprit is, along with a short reason.": "Enter your investigation here... Question about anyone or anyting in your story context."}
               value={investigationInput}
               onChange={handleInputChange}
               required

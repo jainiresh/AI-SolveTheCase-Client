@@ -122,7 +122,7 @@ const Header: React.FC = () => {
       sx={{ width: 550 }}
     >
       <ListItemText primary={'Invite: '} style={{ marginLeft: '1rem', marginTop: '1rem' }} /> 
-      {friends.length == 0 ? <List><Button href='#' type='primary' style={{ marginLeft: '13rem', marginTop: '40rem' }} disabled={buttonDisabled} onClick={() => fetchContacts()}>Fetch Contacts</Button></List> :
+      {friends.length == 0 ? <List><Button href='#' type='primary' style={{ marginLeft: '12rem', marginTop: '20rem' }} disabled={buttonDisabled} onClick={() => fetchContacts()}>FETCH CONTACTS</Button></List> :
       <List>
         {allInvited && <ListItemButton disabled><ListItemText style={{fontStyle:'italic', marginLeft:'10rem'}}>You have no contacts here</ListItemText></ListItemButton>}
         {friends.map((friend, index) => (
@@ -163,6 +163,10 @@ const Header: React.FC = () => {
     window.location.reload();
   }
 
+  const viewEmailRedirect = () => {
+    window.open(`https://mail.google.com/`, '_blank')
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>Mystery Trails</div>
@@ -173,9 +177,12 @@ const Header: React.FC = () => {
         <div>
           <Button style={{color:'whitesmoke',  marginRight: '1rem'}} onClick={() => logout()}>{'Logout'}</Button>
         </div>
+        <div>
+          <Button style={{color:'white',  marginRight: '1rem'}} onClick={() => viewEmailRedirect()}>{'View Email Threads'}</Button>
+        </div>
         <div className={styles.solveButton}>
-          <React.Fragment key={'invite'}>
-            <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' , fontStyle: 'italic'}}><span onClick={fetchContacts}>{'Solve with your friends!'}</span></Button>
+          <React.Fragment key={'invite'} onClick={fetchContacts}>
+            <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' , fontStyle: 'italic'}}><span >{'Solve with your friends!'}</span></Button>
             <Drawer
               anchor={'right'}
               open={state['right']}

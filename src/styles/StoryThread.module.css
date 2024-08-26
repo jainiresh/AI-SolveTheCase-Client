@@ -121,12 +121,12 @@
   padding-top: 0.8rem;
   font-size: 18px;
   font-style: italic;
+  font-size: 1rem;
 }
 
 .investigationInput:hover {
   border-color: #e5b700;
 }
-
 
 .content {
   font-size: 16px;
@@ -135,7 +135,6 @@
   overflow-y: auto;
   max-height: calc(80vh - 150px); /* Adjust based on header and form height */
 }
-
 
 .author {
   font-weight: bold;
@@ -150,8 +149,6 @@
   padding-bottom: 2rem;
   width: fit-content;
 }
-
-
 
 .threadContainer {
   display: flex;
@@ -206,7 +203,6 @@
   border: 2px solid #3a3a3a;
   color: #da8b57;
 }
-
 
 .author {
   font-weight: bold;
@@ -266,9 +262,15 @@
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.3; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .blinkingText {
