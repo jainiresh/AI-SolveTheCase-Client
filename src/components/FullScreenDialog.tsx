@@ -9,7 +9,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardMedia, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { ExpandMoreSharp, FullscreenExit, FullscreenSharp } from '@mui/icons-material';
+import { ExpandMoreSharp, FindInPage, FindReplaceOutlined, FullscreenExit, FullscreenSharp, HourglassBottomTwoTone } from '@mui/icons-material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -107,10 +108,10 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
             </AppBar>
             <Box sx={{ padding: 2 }}>
           {!introGiven ? <Card>
-           <CardContent><Typography>Hey Detective, You have been assigned a case to solve ! </Typography><br /><hr /> <br />
+           <CardContent style={{textAlign:'center'}}><Typography fontWeight={'bold'} style={{display:'flex', justifyContent:'space-around', fontSize:'2 rem'}}>Hey Detective, You have been assigned a case to solve ! <HourglassBottomTwoTone />  </Typography><br /><hr /> <br />
            
-           <Typography>Upon closing this dialog box, you would receive a new case story.
-            The story involves a crime that happened in your very own town and the culprit is none other than, but someone that you have mentioned in your day input.
+           <Typography>You are one step away from receiving your new case . <br />
+            The story case involves a crime that happened in your <span style={{fontWeight:''}}>very own town where you have spent your day</span> and the culprit is none other than, but someone that you have mentioned in your day input.
            <br /><br />
            <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreSharp />}>           <strong>What should you do ?</strong><br />
