@@ -63,6 +63,7 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
     <ToggleButton style={{background:toggleType == 'story' ? '#262626' : 'white',color:toggleType == 'story' ? 'white' : 'black'}} value="day" key='day'>
       {'Your input day'}
     </ToggleButton>
+    
   ];
 
   const handleStoryDescToggle = (e:React.MouseEvent<HTMLElement>  , flag:string) => {
@@ -78,7 +79,9 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
             open={open}
             onClose={handleClose}
             TransitionComponent={Transition}
-            maxWidth={'lg'}
+            PaperProps={{
+              width: '80rem'
+            }}
         
         >
             <AppBar sx={{ position: 'relative', backgroundColor: '#262626', border:'1px solid #da8b57', display:'flex', flexDirection:'row', justifyContent:'space-between' }}  >
@@ -86,7 +89,7 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
                 <CloseIcon />
                 </IconButton>
                 <Toolbar >
-                {!introGiven ? <Typography>Introduction</Typography> : <Typography variant="h6" component="div" >
+                {!introGiven ? <Typography>Rules and Engagement</Typography> : <Typography variant="h6" component="div" >
                 {toggleType == 'answer' ? title: <ToggleButtonGroup onChange={handleStoryDescToggle}>
                   {children}       
                 </ToggleButtonGroup>}
@@ -106,8 +109,26 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
           {!introGiven ? <Card>
            <CardContent><Typography>Hey Detective, You have been assigned a case to solve ! </Typography><br /><hr /> <br />
            
-           <Typography>Upon closing this dialog box, you would receive a new case story, which is nothing but a crime that happened in your town.
-           The culprit is none other than, but someone you have mentioned in your day input.</Typography></CardContent>
+           <Typography>Upon closing this dialog box, you would receive a new case story.
+            The story involves a crime that happened in your very own town and the culprit is none other than, but someone you have mentioned in your day input.
+           <br /><br />
+           <strong>What should you do ?</strong><br />
+           Your task is investigate, using the investigation feature about any character that you have mentioned in your day input, asking him any questions like a real detective do.<br />
+           <i>There are a few sample investigations in place, to help you form your own investigation.</i>
+           <br /><br />
+
+           <strong>How to Investigate ?</strong><br />
+           You can question any character/role, regarding their activities ? any suspicious behaviour ? Or their location at the time of theft, etc? Sky is your limit.<br /><br />
+
+
+           <strong>How to complete the game ?</strong><br />
+           Investigate untill you please, and when you feel like you have found the culprit, click on the <i>"Ready with your answer? Click here to submit"</i> button on the top right, to submit and solve the case. It is that simple !
+           <br /><br />
+
+           Feel free to read your story context, or your day input anytime, to think of different scenarios for Investigation.<br /><br /><hr />
+           
+           <span style={{color:'gray', fontStyle:'italic'}}>
+           To help you track the case, the AI automatically nicknames any character in your day input, without names.</span></Typography></CardContent>
           </Card> : <Card>
             {toggleType == 'story' && <CardMedia
               component="img"   

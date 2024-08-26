@@ -162,7 +162,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
             ))}
       <Accordion style={{backgroundColor:'transparent', color:'white'}} defaultExpanded={storyThreads.length == 0}> 
         <AccordionSummary expandIcon={<ExpandMoreIcon style={{color:'white'}}/>}>
-          <Typography style={{color:'whitesmoke'}}>Here are a few sample investigations to help you form your investigation.</Typography>
+          <Typography style={{color:'whitesmoke'}}>Here are a few example investigations from other users, for their cases</Typography>
         </AccordionSummary>
         <AccordionDetails>
       <ul className={styles.list}>
