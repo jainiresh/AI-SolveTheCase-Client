@@ -133,7 +133,7 @@ export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, st
            <strong>How to complete the game ?</strong><br />
            </AccordionSummary>
            <AccordionDetails>
-           Investigate untill you please, and when you feel like you have found the culprit, click on the <i>"Ready with your answer? Click here to submit"</i> button on the top right, to submit and solve the case. It is that simple !
+           Investigate untill you please, and when you feel like you have found the culprit, click on the <i>&quot;Ready with your answer? Click here to submit&quot;</i> button on the top right, to submit and solve the case. It is that simple !
            </AccordionDetails>
 
            </Accordion>

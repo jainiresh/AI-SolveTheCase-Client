@@ -181,7 +181,7 @@ const Header: React.FC = () => {
           <Button style={{color:'white',  marginRight: '1rem'}} onClick={() => viewEmailRedirect()}>{'View Email Threads'}</Button>
         </div>
         <div className={styles.solveButton}>
-          <React.Fragment key={'invite'} onClick={fetchContacts}>
+          <React.Fragment key={'invite'}>
             <Button onClick={toggleDrawer('right', true)} style={{ color: 'white' , fontStyle: 'italic'}}><span >{'Solve with your friends!'}</span></Button>
             <Drawer
               anchor={'right'}
