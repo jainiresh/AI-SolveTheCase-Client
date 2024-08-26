@@ -5,12 +5,12 @@ import { post } from '@/helpers/request';
 import GameLoader from './GameLoader';
 import Accordion from '@mui/material/Accordion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Alert, Button, CardMedia, Typography } from '@mui/material';
+import { Alert, Button, CardMedia, IconButton, Typography } from '@mui/material';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import FullScreenDialog from './FullScreenDialog';
 import Image from './Image';
-import { ExpandCircleDown } from '@mui/icons-material';
+import { ExpandCircleDown, QuestionAnswerRounded, QuestionMarkOutlined, QuestionMarkRounded, QuestionMarkSharp, QuestionMarkTwoTone } from '@mui/icons-material';
 
 interface StoryEntry {
   id: number;
@@ -124,6 +124,10 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
   const openDialog= () =>{
     setOpenStoryDialog(true);
   }
+  const openDialogForRules = () => {
+    setIntroGiven(false);
+    setOpenStoryDialog(true);
+  }
 
   return (
     <div className={styles.pageContainer}>
@@ -132,9 +136,15 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
       {showLoader ? <GameLoader loadingText='Investigate'/> :
         <div className={styles.container}>
           <div className={styles.header}>
+            <div>
             <Button onClick={() => { openDialog(); }} style={{backgroundColor:'black'}} className={styles.contextButton}>
               <Typography color={'#da8b57'}>View Story Context / Your Day</Typography>
             </Button>
+            <IconButton style={{color:'white', backgroundColor:'#da8b57', borderRadius:'10%', marginLeft:'0.5rem', padding:'none'}} onClick={() => openDialogForRules()}>
+              <Typography>Help</Typography>
+              <QuestionMarkSharp style={{scale:'0.8'}}/>
+            </IconButton>
+            </div>
             <Button disabled={storyThreads.length === 0} style={{backgroundColor:storyThreads.length == 0 ? 'transparent':''}} onClick={() => setReadySubmit(prevState => !prevState)} className={`${styles.contextButton} ${storyThreads.length != 0 ? styles.blinkingText : ''}`}>
               <Typography color={storyThreads.length == 0 ? 'gray' : ''}>{!readySubmit ? (storyThreads.length === 0 ? `No investigations made yet` : `Ready with your answer? Click here to submit`) : `Click here to Investigate more...`}</Typography>
             </Button>
