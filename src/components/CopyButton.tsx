@@ -56,7 +56,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
     return (
         <div className={styles.container} onClick={copyText} style={{display:'flex', flexDirection:'column'}}>
             <Typography className={`${styles.typingText} ${styles.glow}`} >Here is a sample input, click here to copyText</Typography>
-            <TypingEffect text={text} speed={100}  />
+            <TypingEffect text={text} speed={10}  />
             {showAlert && <Alert style={{position:'fixed', bottom:'40px', left:'45vw', zIndex: 1000, scale:'1.6'}} variant="filled" severity="success">
         Message copied successfully !
       </Alert>}
