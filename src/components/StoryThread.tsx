@@ -43,6 +43,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
   const [dayInput, setDayInput] = React.useState<string>('');
   const [showAlert, setShowAlert] = React.useState<boolean>(false);
   const [introGiven, setIntroGiven] = React.useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = React.useState<string>('Investigation completed and Email thread sent !')
   
 
   const getStoryDetails = async () => {
@@ -104,6 +105,11 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
     setShowLoader(true);
     const response = await post('/story/submit', { email: localStorage.getItem('email'), data: investigationInput });
     setShowLoader(false);
+    setAlertMessage('You have completed your case !');
+    setShowAlert(true);
+    setTimeout(()=>{
+      setShowAlert(false);
+    },5000);
     if (response.status === 200) {
       setInvestigationInput('');
       const { result:investigationResult} = response.data;
@@ -198,7 +204,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
         </div>
     
       { showAlert &&<Alert style={{position:'fixed', bottom:'20px', left:'45vw', zIndex: 1000}}  variant="filled" severity="success">
-  Investigation completed and Email thread sent !
+  {alertMessage}
 </Alert>}
     </div>}
     </div>
