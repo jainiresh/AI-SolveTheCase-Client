@@ -9,7 +9,7 @@ well, this one is a complete crime solver, leveraging AI to give yout the exact 
 
 
 ## Demo
-Live Deployed version : https://ai-solvethecase-client.onrender.com
+Live Deployed version : https://ai-solvethecase-clientside.onrender.com/
 <!-- Share a brief video overview of the project with a screen share, two minutes max.-->
 
 ## Code

@@ -1,8 +1,8 @@
 import DevServer from "next/dist/server/dev/next-dev-server";
 
-export const PROD_SWITCH: string = '1'
-export const backendUrl= process.env.BACKEND_URL || ( PROD_SWITCH !== '1' ?  'http://localhost:3000' : 'https://ai-solvethecase.onrender.com' )
-export const frontEndUrl= process.env.FRONTEND_URL ||( PROD_SWITCH !== '1' ?  'http://localhost:3001' : 'https://ai-solvethecase-client.onrender.com' )
+export const PROD_SWITCH: string = '0'
+export const backendUrl= process.env.BACKEND_URL || ( PROD_SWITCH !== '1' ?  'http://localhost:3000' : 'https://ai-solvethecase-serverside.onrender.com' )
+export const frontEndUrl= process.env.FRONTEND_URL ||( PROD_SWITCH !== '1' ?  'http://localhost:3001' : 'https://ai-solvethecase-clientside.onrender.com/' )
 
 export const LOGIN_URL = process.env.LOGIN_URL || backendUrl + "/auth/nylas/hostedAuth";
 export const LOADING_MESSAGES = [
