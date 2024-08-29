@@ -3,6 +3,7 @@ import { Alert, IconButton, Typography } from '@mui/material';
 import ContentCopy from '@mui/icons-material/ContentCopy';
 import styles from '../styles/CopyButton.module.css'; // Make sure to import your CSS module
 import { testDay } from '@/constants/constants';
+import { CopyAll } from '@mui/icons-material';
 
 // Define the props for TypingEffect
 interface TypingEffectProps {
@@ -55,7 +56,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
 
     return (
         <div className={styles.container} onClick={copyText} style={{display:'flex', flexDirection:'column'}}>
-            <Typography className={`${styles.typingText} ${styles.glow}`} >Here is a sample input, click here to copyText</Typography>
+            <Typography className={`${styles.typingText} ${styles.glow}`} >Here is a sample input, click here to copyText <CopyAll /></Typography>
             <TypingEffect text={text} speed={10}  />
             {showAlert && <Alert style={{position:'fixed', bottom:'40px', left:'45vw', zIndex: 1000, scale:'1.6'}} variant="filled" severity="success">
         Message copied successfully !
