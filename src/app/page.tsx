@@ -8,8 +8,8 @@ import { Google } from '@mui/icons-material';
 export default function Home() {
   const router = useRouter()
   const handleLogin = ():void =>{
-    if(localStorage.getItem('id') && localStorage.getItem("id") != "null") 
-      router.push(`/story?id=${localStorage.getItem('id')}&email=${localStorage.getItem('email')}`);
+    // if(localStorage.getItem('id') && localStorage.getItem("id") != "null") 
+    //   router.push(`/story?id=${localStorage.getItem('id')}&email=${localStorage.getItem('email')}`);
     window.location.href = LOGIN_URL;
   }
   return (
