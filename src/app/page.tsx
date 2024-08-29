@@ -4,17 +4,21 @@ import { useRouter } from 'next/navigation'
 import styles from '../styles/Home.module.css';
 import { LOGIN_URL } from '@/constants/constants';
 import { Google } from '@mui/icons-material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert } from '@mui/material';
 
 export default function Home() {
+  
+  useEffect(()=>{
+    if(window.location.pathname == '/'){
+      setLoading(false);
+    }
+  },[])
 
   const [loading, setLoading] = useState(false);
   const router = useRouter()
   const handleLogin = ():void =>{
     setLoading(true);
-    // if(localStorage.getItem('id') && localStorage.getItem("id") != "null") 
-    //   router.push(`/story?id=${localStorage.getItem('id')}&email=${localStorage.getItem('email')}`);
     window.location.href = LOGIN_URL;
   }
   return (
