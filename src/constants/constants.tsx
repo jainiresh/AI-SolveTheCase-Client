@@ -1,6 +1,6 @@
 import DevServer from "next/dist/server/dev/next-dev-server";
 
-export const PROD_SWITCH: string = '0'
+export const PROD_SWITCH: string = '1'
 export const backendUrl= process.env.BACKEND_URL || ( PROD_SWITCH !== '1' ?  'http://localhost:3000' : 'https://ai-solvethecase-serverside.onrender.com' )
 export const frontEndUrl= process.env.FRONTEND_URL ||( PROD_SWITCH !== '1' ?  'http://localhost:3001' : 'https://ai-solvethecase-clientside.onrender.com' )
 
