@@ -1,9 +1,9 @@
-import React, { FormEventHandler, useState } from 'react';
+import React, { FormEventHandler, useEffect, useRef, useState } from 'react';
 import styles from '../styles/Mysteryinput.module.css';
 import { post } from '@/helpers/request';
 import { Alert, Card, CardContent, IconButton, Typography } from '@mui/material';
 import { ContentCopy } from '@mui/icons-material';
-import { testDay } from '@/constants/constants';
+import { getRandomStoryEndpoint, testDay } from '@/constants/constants';
 import CopyButton from './CopyButton';
 
 interface StoryEntryInput {
@@ -13,6 +13,33 @@ interface StoryEntryInput {
 }
 
 const MysteryInputForm: React.FC<StoryEntryInput> = ({ storyInput, setStoryInput, handleSubmit }) => {
+
+  const hasFetched = useRef(false);
+  const [testDay, setTestDay] = useState('Please wait... Loading your content.')
+
+  useEffect(() => {
+    if (!hasFetched.current) { 
+      hasFetched.current = true
+      const fetchTestDay = async () => {
+        try {
+          const response = await fetch(getRandomStoryEndpoint); // Replace with your actual API endpoint
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.text()
+          console.log('here')
+          console.log(data.charAt(0))
+          setTestDay(' '+data); 
+          hasFetched.current = true; 
+        } catch (error) {
+          console.error('Error fetching testDay:', error);
+          // Handle error appropriately
+        }
+      };
+
+      fetchTestDay();
+    }
+  }, [testDay]); // Empty dependency array ensures this runs only once for the initial render
 
   
 

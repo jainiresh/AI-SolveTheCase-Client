@@ -32,8 +32,6 @@ interface FullScreenDialogProps{
 }
 
 export default function FullScreenDialog({open, setOpen, storyMainPictureUrl, storyDescription, title='Story Context', dayInput, introGiven=false, setIntroGiven}: FullScreenDialogProps) {
-
-  console.log("Rendered")
     const [fullScreen, setFullScreen] = React.useState<boolean>(false);
     const [toggleType, setToggleType] = React.useState<string>('story');
 

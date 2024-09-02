@@ -24,7 +24,6 @@ const [storyContext, setStoryContext] = useState<string>('empty')
       <div className={styles.content}>
       {storyContext=='empty' && <Instructions handleUserStoryInput ={handleUserStoryInput}/>}
       {storyContext=='ownStory' && <MysteryInputForm storyInput={ storyInput} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>}
-      {/* {storyContext=='aiStory' && <MysteryInputForm storyInput={testDay} setStoryInput={setStoryInput} handleSubmit={handleSubmit}/>} */}
     </div>
     </div>
   );

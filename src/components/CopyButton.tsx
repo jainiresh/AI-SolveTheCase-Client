@@ -16,21 +16,24 @@ const TypingEffect: React.FC<TypingEffectProps> = ({ text, speed }) => {
 
     useEffect(() => {
         let index = 0;
+        setDisplayText(''); // Clear previous text
         const typingInterval = setInterval(() => {
-            if (index < text.length) {
+            if (index < text.length-1) {
                 setDisplayText(prev => prev + text[index]);
-                index++;
+                index+=1;
             } else {
                 clearInterval(typingInterval);
             }
         }, speed);
-
+    
         return () => clearInterval(typingInterval);
     }, [text, speed]);
+    
+    
 
     return (
         <Typography 
-            className={`${styles.typingText} ${styles.glow}`} 
+            className={`${styles.typingTextChild} ${styles.glow}`} 
         >
             {displayText}
         </Typography>
@@ -46,16 +49,16 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
 
     const [showAlert, setShowAlert] = useState(false);
    
-    const copyText = async () => {
+    const copyText = async (text: string) => {
         setShowAlert(true);
-        await navigator.clipboard.writeText(testDay);
+        await navigator.clipboard.writeText(text);
         setTimeout(()=>{
           setShowAlert(false);
         },3000)
       }
 
     return (
-        <div className={styles.container} onClick={copyText} style={{display:'flex', flexDirection:'column'}}>
+        <div className={styles.container} onClick={() => copyText(text)} style={{display:'flex', flexDirection:'column'}}>
             <Typography className={`${styles.typingText} ${styles.glow}`} >Here is a sample input, click here to copyText <CopyAll /></Typography>
             <TypingEffect text={text} speed={10}  />
             {showAlert && <Alert style={{position:'fixed', bottom:'40px', left:'45vw', zIndex: 1000, scale:'1.6'}} variant="filled" severity="success">

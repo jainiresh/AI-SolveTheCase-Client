@@ -31,6 +31,15 @@
     margin-top: 3rem;
 }
 
+.typingTextChild {
+    margin-left: 1rem;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bolder;
+    color: #ebe4df;
+    margin-top: 3rem;
+}
+
 .iconButton {
     color: #ee8641;
     margin-left: 0.5rem;
