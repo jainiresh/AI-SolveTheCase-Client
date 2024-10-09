@@ -167,7 +167,7 @@ const StoryThread: React.FC<StoryThreadProps> = ({ entries, firstTime }) => {
                   <hr /><br />
                   <div>
                     <div className={styles.image}>
-                      <Image src={`${entry.imageUrl}500x500/`} width={'700'} height={'500'} alt='image' />
+                      <Image src={`${entry.imageUrl}`} width={'700'} height={'500'} alt='image' />
                     </div>
                   </div>
                   <div className={styles.content}>
